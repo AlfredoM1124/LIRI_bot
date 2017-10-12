@@ -1,0 +1,25 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "A mock version of the popular IOS Siri, using Node.js concepts.",
+  "main": "LIRI.js",
+  "dependencies": {
+    "inquirer": "^3.3.0",
+    "spotify-web-api-node": "^2.5.0",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlfredoM1124/LIRI_bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlfredoM1124/LIRI_bot/issues"
+  },
+  "homepage": "https://github.com/AlfredoM1124/LIRI_bot#readme"
+}
