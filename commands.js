@@ -27,3 +27,44 @@ var Tweet = function (handle, Tweetcount) {
 }
 
 // End of Tweet Method
+
+// LIRIfy method allows you to take advantage of their extensive music database
+var LIRIfy = function (songTitle) {
+
+	var object = new Object();
+	var spotify = new Spotify(Keys.SpotKeys);
+
+	spotify.search({
+		type: 'track',
+		query: songTitle
+	},
+	function (err, data) {
+		if (err) {
+			return console.log('Error: ' + err);
+		}
+
+		var newSong = data.tracks.items;
+
+		newSong.forEach(function (thisSong) {
+
+			var artistArray = thisSong.artists;
+			var artists;
+			artistArray.forEach(function (artistsName) {
+				object.artists = [];
+				object.artists.push(artistsName.name);
+			})
+
+		object.songName = thisSong.name;
+		object.songLink = thisSong.href;
+		object.album = thisSong.album.name;
+
+		console.log(object);
+		})
+	});
+}
+// End of LIRIfy method ... 
+
+// Exports 
+
+exports.Tweet = Tweet;
+exports.LIRIfy = LIRIfy;
