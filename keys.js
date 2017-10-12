@@ -10,5 +10,7 @@ var spotifyKey = {
     secret: 'a398a129d043471caf59729e95b2270c'
 }
 
-exports.twitterKeys = twitterKey;
-exports.spotifyKeys = spotifyKey;
+exports.tweetKeys = twitterKey;
+exports.SpotKeys = spotifyKey;
+
+console.log("It's Alive!!!!!!!");
