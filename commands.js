@@ -1,4 +1,5 @@
 // Initializing dependencies
+var Require = require('require');
 var Request = require('request');
 var Keys = require('keys.js');
 var Twitter = require('twitter');
@@ -64,7 +65,26 @@ var LIRIfy = function (songTitle) {
 }
 // End of LIRIfy method ... 
 
+// Start of MovieThis method ...
+var movieThis = function (movieTitle) {
+    
+    var searchURL = 'http://www.omdbapi.com/?' + 't=' + encodeURIComponent(movieTitle) + '&apikey=40e9cece';
+    
+    Request(searchURL, function (error, response, body) {
+
+        // If there were no errors and the response code was 200 (i.e. the request was successful)...
+        if (!error && response.statusCode === 200) {
+
+            // Then we print out the JSON Information we need...
+            console.log("Movie Title: " + JSON.parse(body).Title + "\nDate released: " + JSON.parse(body).Year + "\nIMDB rating: " + JSON.parse(body).Ratings[0].Value + "\nRotten Tomatos: " + JSON.parse(body).Ratings[1].Value + "\nCountries where they filmed: " + JSON.parse(body).Country + "\nLanguage: " + JSON.parse(body).Language + "\nPlot: " + JSON.parse(body).Plot + "\nActors: " + JSON.parse(body).Actors + "\n");
+            
+        }
+    });
+}
+// End of MovieThis Method
+
 // Exports 
 
 exports.Tweet = Tweet;
 exports.LIRIfy = LIRIfy;
+exports.movieThis = movieThis;
