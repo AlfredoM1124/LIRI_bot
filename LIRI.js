@@ -1,6 +1,7 @@
 // Initializing dependencies
 var Require = require('require');
 var Request = require('request');
+var Inquirer = require('inquirer');
 var fs = require('fs');
 var Keys = require('keys.js');
 var Commands = require('commands.js');
@@ -37,8 +38,22 @@ else if (Argument === "spotify-song") {
 	}
 	// Access commands.js file to use LIRIfy method on line 32
 	Commands.LIRIfy(songName);
-} 
-else if (Argument === "magic-trick") {
+} else if (command === "movie-this") {
+
+    var movieTitle;
+
+    // Sets default movie when argument is blank
+    if (typeof process.argv[3] === 'undefined') {
+        console.log("No Movie Entered! Reverting to defaults...\n");
+        movieTitle = "Mr.Nobody";
+    } else {
+        movieTitle = process.argv[3];
+        movieTitle.split(' ').join('+');
+    }
+    // Access command.js file to use movieThis method on line 69
+    Commands.movieThis(movieTitle);
+
+	} else if (Argument === "magic-trick") {
 
     // Asynch functionality for text file
     fs.readFile('Words.txt', "utf8", function (err, data) {
@@ -77,6 +92,20 @@ else if (Argument === "magic-trick") {
             }
 
             Commands.LIRIfy(songName);
+
+            } else if (dataArray[0] == "movie-this") {
+
+            var movieTitle;
+
+            if (dataArray[1] === 'undefined') {
+                console.log("No Movie Entered! Choosing for you...\n");
+                movieTitle = "Mr.Nobody";
+            } else {
+                movieTitle = dataArray[1];
+                movieTitle.split(',').join('+');
+            }
+
+            Commands.movieThis(movieTitle);
 
         }
     });

@@ -1,6 +1,7 @@
 // Initializing dependencies
 var Require = require('require');
 var Request = require('request');
+var Inquirer = require('inquirer');
 var Keys = require('keys.js');
 var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
